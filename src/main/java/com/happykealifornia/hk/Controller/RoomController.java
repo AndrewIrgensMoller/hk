@@ -19,7 +19,7 @@ public class RoomController {
     public String room(Model model) {
         List<Room> roomList = roomRepo.findAllRooms();
         model.addAttribute("rooms", roomList);
-        return "show-room";
+        return "show-rooms";
     }
 
     @GetMapping("/addroom")
@@ -49,7 +49,7 @@ public class RoomController {
         return "update-room";
     }
 
-    @PostMapping("/saveupdate")
+    @PostMapping("/saveupdates")
     public String saveUpdateRoom(@ModelAttribute Room room) {
         roomRepo.update(room);
         return "redirect:/room";
@@ -60,6 +60,5 @@ public class RoomController {
         roomRepo.delete(room_id);
         return "redirect:/room";
     }
-
 
 }

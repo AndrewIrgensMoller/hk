@@ -7,6 +7,13 @@ public class Room {
     private int room_type;
 
     //constructor
+    public Room() {
+    }
+    public Room(int room_id, String hotel, int room_type) {
+        this.room_id = room_id;
+        this.hotel = hotel;
+        this.room_type = room_type;
+    }
 
     public int getRoom_id() {
         return room_id;
