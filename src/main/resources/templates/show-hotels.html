@@ -41,7 +41,7 @@
 </thead>
 <tbody>
 <tr th:each="hotel:${hotels}">
-    <th scope="row" th:text="${hotel}">1</th>
+
     <td th:text="${hotel.hotel}"></td>
     <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${hotel.hotel}}">Details</a></td>
     <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${hotel.hotel_id}}">Delete</a></td>
