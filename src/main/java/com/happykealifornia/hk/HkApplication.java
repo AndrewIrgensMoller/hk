@@ -10,7 +10,6 @@ public class HkApplication {
         SpringApplication.run(HkApplication.class, args);
     }
 
-    //idk :D
-    //test
+
 
 }
