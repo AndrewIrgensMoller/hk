@@ -23,7 +23,7 @@ public class CustomerRepository {
         PreparedStatementCreator psc = new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps = connection.prepareStatement("insert into customers values (null, ?, ? )");
+                PreparedStatement ps = connection.prepareStatement("insert into customer values (null, ?, ?, null)");
                 ps.setString(1, customer.getCustomerName());
                 ps.setString(2, customer.getCustomerContact());
                 return ps;
@@ -38,7 +38,7 @@ public class CustomerRepository {
         String sql = "SELECT * from customer";
 
         SqlRowSet rs = jdbc.queryForRowSet(sql);
-        List<Customer> customerList = new ArrayList<>();
+        List<Customer> customerList  = new ArrayList<>();
 
         try {
             while (rs.next()) {
@@ -52,6 +52,7 @@ public class CustomerRepository {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return customerList;
 
     }

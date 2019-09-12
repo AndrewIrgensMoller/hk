@@ -3,7 +3,6 @@ package com.happykealifornia.hk.Controller;
 import com.happykealifornia.hk.Model.Customer;
 import com.happykealifornia.hk.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +20,10 @@ public class CustomerController {
     @GetMapping ("/add-customer")
     public String newCustomer(Model m) {
         m.addAttribute("newCustomer", new Customer());
-        return "/customer";
+        return "/add-customer";
     }
 
-    @PostMapping("/add-customer/save")
+    @PostMapping("/add-customer/savecustomer")
     public String saveTCustomer(@ModelAttribute Customer customer) {
         customerRepo.newCustomer(customer);
         return "redirect:/customer";
@@ -33,8 +32,9 @@ public class CustomerController {
     @GetMapping("/customer")
     public String showCustomers(Model model) {
         List<Customer> customerList = customerRepo.findCustomer();
-        model.addAttribute("customer", customerList);
-        return "/customer";
+        model.addAttribute("customers", customerList);
+        System.out.println(customerList);
+        return "customer";
     }
 
 

@@ -3,10 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hotel Customers</title>
+    <title>New Booking</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -26,6 +26,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/customer">Customers <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/booking">Bookings <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <span class="navbar-text">
       KEAlifornia Hotels
@@ -33,25 +36,27 @@
     </div>
 </nav>
 
-    <h1>Existing Customers</h1>
-    <table class="table table-hover">
-        <tr>
-            <th>Customer ID</th>
-            <th>Customer Name</th>
-            <th>Customer Contact</th>
-        </tr>
-        <tr th:each="customer: ${customers}">  <!-- give a name to the model attribute, then call the properties by the name you JUST gave them -->
-            <td th:text="${customer.customerID}"></td>
-            <td th:text="${customer.customerName}"> </td>
-            <td th:text="${customer.customerContact}"> </td>
-        </tr>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
 
-    </table>
-    <a class="btn btn-primary" th:href="@{'/add-customer/'}">Add New Customer</a>
+        <h1 class="display-4">Bookings</h1>
+        <p class="lead">
+            <!-- always add the fucking button within the form, otherwise it wont work -->
+        <form  method="post" action="/add-booking/savebooking" th:object="${newBooking}">
+            <div class="form-group">
+                Name:<br>
+                <input type="text" name="name" class="form-control" th:field="${newBooking.HotelName}"><br>
+                Contact:<br>
+                <input type="text" name="contact" class="form-control" th:field="${newCustomer.customerContact}">
+                <br>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Customer</button>
+        </form>
+    </div>
+</div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
 </body>
 </html>

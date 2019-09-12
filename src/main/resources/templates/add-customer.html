@@ -4,18 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Hotel Add Customer</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<h1>Customers</h1>
-<form  method="post" action="/customer/save" th:object="${newCustomer}">
-    Name:<br>
-    <input type="text" name="name" th:field="${newCustomer.customerName}"><br>
-    Contact:<br>
-    <input type="text" name="contact" th:field="${newCustomer.customerContact}">
-</form>
-<br>
-<button type="button">Add Customer</button>
-<br>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">KEAlifornia Hotels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/hotel">Hotels <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/customer">Customers <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      KEAlifornia Hotels
+    </span>
+    </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+
+        <h1 class="display-4">Customers</h1>
+        <p class="lead">
+        <!-- always add the fucking button within the form, otherwise it wont work -->
+        <form  method="post" action="/add-customer/savecustomer" th:object="${newCustomer}">
+            <div class="form-group">
+                Name:<br>
+                <input type="text" name="name" class="form-control" th:field="${newCustomer.customerName}"><br>
+                Contact:<br>
+                <input type="text" name="contact" class="form-control" th:field="${newCustomer.customerContact}">
+                <br>
+             </div>
+            <button type="submit" class="btn btn-primary">Add Customer</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
