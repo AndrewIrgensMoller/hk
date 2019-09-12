@@ -24,6 +24,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/hotel">Hotels <span class="sr-only">(current)</span></a>
             </li>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/room">Rooms <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <span class="navbar-text">
       KEAlifornia Hotels
@@ -45,7 +49,7 @@
     <td th:text="${hotel.hotel}"></td>
     <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${hotel.hotel}}">Details</a></td>
     <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${hotel.hotel_id}}">Delete</a></td>
-    <td><a class="btn btn-success" th:href="@{'/updatehotel/' + ${hotel.hotel_id}}">Edit</a></td>
+
 </tr>
 </tbody>
 </table>
