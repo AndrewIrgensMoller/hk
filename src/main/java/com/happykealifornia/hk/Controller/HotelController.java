@@ -30,8 +30,8 @@ public class HotelController {
 
     @PostMapping("/savehotel")
     //    @ResponseBody
-    public String save(@ModelAttribute Hotel hotel) {
-        Hotel hotelInserted = hotelRepo.insert(hotel);
+    public String save(@ModelAttribute Hotel hotel_id) {
+        Hotel hotelInserted = hotelRepo.insert(hotel_id);
         return "redirect:/hotel";
     }
 

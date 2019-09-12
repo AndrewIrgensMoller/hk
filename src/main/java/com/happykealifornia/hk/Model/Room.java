@@ -3,18 +3,21 @@ package com.happykealifornia.hk.Model;
 public class Room {
     //variables
     private int room_id;
+    private int hotel_id;
     private String hotel;
-    private int room_type;
+    private String room_type;
 
     //constructor
     public Room() {
     }
 
-    public Room(int room_id, String hotel, int room_type) {
+    public Room(int room_id, int hotel_id, String hotel, String room_type) {
         this.room_id = room_id;
+        this.hotel_id = hotel_id;
         this.hotel = hotel;
         this.room_type = room_type;
     }
+
 
     public int getRoom_id() {
         return room_id;
@@ -32,20 +35,29 @@ public class Room {
         this.hotel = hotel;
     }
 
-    public int getRoom_type() {
+    public String getRoom_type() {
         return room_type;
     }
 
-    public void setRoom_type(int room_type) {
+    public void setRoom_type(String room_type) {
         this.room_type = room_type;
+    }
+
+    public int getHotel_id() {
+        return hotel_id;
+    }
+
+    public void setHotel_id(int hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     @Override
     public String toString() {
         return "Room{" +
                 "room_id=" + room_id +
+                ", hotel_id=" + hotel_id +
                 ", hotel='" + hotel + '\'' +
-                ", room_type=" + room_type +
+                ", room_type='" + room_type + '\'' +
                 '}';
     }
 }

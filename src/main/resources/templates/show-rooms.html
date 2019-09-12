@@ -48,8 +48,8 @@
         <td th:text="${room.hotel}"></td>
         <td th:text="${room.room_type}"></td>
         <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${room.hotel}}">Details</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${room.room_id}}">Delete</a></td>
-        <td><a class="btn btn-success" th:href="@{'/updatehotel/' + ${room.room_id}}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/deleteroom/' + ${room.room_id}}">Delete</a></td>
+
     </tr>
     </tbody>
 </table>

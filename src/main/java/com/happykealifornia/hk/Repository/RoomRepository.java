@@ -27,8 +27,9 @@ public class RoomRepository {
         Room room = new Room();
         while (rs.next()) {
             room.setRoom_id(rs.getInt("room_id"));
+            room.setRoom_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
-            room.setRoom_type(rs.getInt("room_type"));
+            room.setRoom_type(rs.getString("room_type"));
         }
         return room;
     }
@@ -39,8 +40,9 @@ public class RoomRepository {
         while (rs.next()) {
             Room room = new Room();
             room.setRoom_id(rs.getInt("room_id"));
+            room.setHotel_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
-            room.setRoom_type(rs.getInt("room_type"));
+            room.setRoom_type(rs.getString("room_type"));
 
             roomList.add(room);
         }
@@ -52,9 +54,9 @@ public class RoomRepository {
         PreparedStatementCreator psc = new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES(null , ?,?)", new String[]{"room_id"});
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES(null , null,?,?)", new String[]{"room_id"});
                 ps.setString(1, room.getHotel());
-                ps.setInt(2, room.getRoom_type());
+                ps.setString(2, room.getRoom_type());
 
                 return ps;
             }
