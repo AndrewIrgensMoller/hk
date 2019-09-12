@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hotel view</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">KEAlifornia Hotels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/hotel">Hotels <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/room">Rooms <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      KEAlifornia Hotels
+    </span>
+    </div>
+</nav>
+
+<h1></h1>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Room List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room:${rooms}">
+
+        <td th:text="${room.hotel}"></td>
+        <td th:text="${room.room_type}"></td>
+        <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${room.hotel}}">Details</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${room.room_id}}">Delete</a></td>
+        <td><a class="btn btn-success" th:href="@{'/updatehotel/' + ${room.room_id}}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<a class="btn btn-primary" th:href="@{'/addroom/'}">Add New Room</a>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
