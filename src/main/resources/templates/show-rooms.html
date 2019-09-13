@@ -39,7 +39,10 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col">Room List</th>
+        <th scope="col">Hotel</th>
+        <th scope="col">Room Type</th>
+        <th scope="col">Cost per night</th>
+        <th scope="col">Book</th>
     </tr>
     </thead>
     <tbody>
@@ -47,7 +50,8 @@
 
         <td th:text="${room.hotel}"></td>
         <td th:text="${room.room_type}"></td>
-        <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${room.hotel}}">Details</a></td>
+        <td th:text="${room.costPerNight}"></td>
+        <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${room.hotel}}">Book</a></td>
         <td><a class="btn btn-danger" th:href="@{'/deleteroom/' + ${room.room_id}}">Delete</a></td>
 
     </tr>

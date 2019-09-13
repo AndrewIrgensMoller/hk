@@ -1,23 +1,34 @@
 package com.happykealifornia.hk.Model;
 
+import java.math.BigDecimal;
+
 public class Room {
     //variables
     private int room_id;
     private int hotel_id;
     private String hotel;
     private String room_type;
+    private BigDecimal costPerNight;
 
     //constructor
     public Room() {
     }
 
-    public Room(int room_id, int hotel_id, String hotel, String room_type) {
+    public Room(int room_id, int hotel_id, String hotel, String room_type, BigDecimal costPerNight) {
         this.room_id = room_id;
         this.hotel_id = hotel_id;
         this.hotel = hotel;
         this.room_type = room_type;
+        this.costPerNight=costPerNight;
     }
 
+    public BigDecimal getCostPerNight() {
+        return costPerNight;
+    }
+
+    public void setCostPerNight(BigDecimal costPerNight) {
+        this.costPerNight = costPerNight;
+    }
 
     public int getRoom_id() {
         return room_id;
@@ -58,6 +69,7 @@ public class Room {
                 ", hotel_id=" + hotel_id +
                 ", hotel='" + hotel + '\'' +
                 ", room_type='" + room_type + '\'' +
+                ", costPerNight=" + costPerNight +
                 '}';
     }
 }

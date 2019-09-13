@@ -40,19 +40,20 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col">Hotel List</th>
+        <th scope="col">Hotel</th>
+        <th scope="col">View Rooms</th>
     </tr>
-</thead>
-<tbody>
-<tr th:each="hotel:${hotels}">
+    </thead>
+    <tbody>
+    <tr th:each="hotel:${hotels}">
 
-    <td th:text="${hotel.hotel}"></td>
-    <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${hotel.hotel}}">Details</a></td>
-    <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${hotel.hotel_id}}">Delete</a></td>
+        <td th:text="${hotel.hotel}"></td>
+        <td><a target="_blank" th:href="@{'https://www.imdb.com/' + ${hotel.hotel}}">Details</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/deletehotel/' + ${hotel.hotel_id}}">Delete</a></td>
 
 
-</tr>
-</tbody>
+    </tr>
+    </tbody>
 </table>
 <a class="btn btn-primary" th:href="@{'/addhotel/'}">Add New Hotel</a>
 

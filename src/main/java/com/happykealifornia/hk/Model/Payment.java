@@ -1,20 +1,24 @@
 package com.happykealifornia.hk.Model;
 
+import java.math.BigDecimal;
+
 public class Payment {
     //variables
     private int payment_id;
     private int customer_id;
     private int booking_id;
-    private int amount;
+    private BigDecimal amount;
+
+    Booking booking = new Booking();
+    Room room = new Room();
 
     //constructor
 
-
-    public Payment(int payment_id, int customer_id, int booking_id, int amount) {
+    public Payment(int payment_id, int customer_id, int booking_id) {
         this.payment_id = payment_id;
         this.customer_id = customer_id;
         this.booking_id = booking_id;
-        this.amount = amount;
+        this.amount = getTotalRoomsCost();
     }
 
     //getters and setters
@@ -43,13 +47,25 @@ public class Payment {
         this.booking_id = booking_id;
     }
 
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    // returns Total nights * costPerNight
+    public BigDecimal getTotalRoomsCost() {
+        long nights = booking.getTotalNights();
+        if (nights == 0) {
+            return BigDecimal.ZERO;
+        }
+        return room.getCostPerNight().multiply(BigDecimal.valueOf(nights));
+    }
+
+    // converts currency DKK to HDD and vice-versa
+
 
     @Override
     public String toString() {

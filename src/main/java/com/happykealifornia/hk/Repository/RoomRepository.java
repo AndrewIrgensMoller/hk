@@ -30,6 +30,7 @@ public class RoomRepository {
             room.setRoom_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
             room.setRoom_type(rs.getString("room_type"));
+            room.setCostPerNight(rs.getBigDecimal("room_type"));
         }
         return room;
     }
@@ -43,6 +44,7 @@ public class RoomRepository {
             room.setHotel_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
             room.setRoom_type(rs.getString("room_type"));
+            room.setCostPerNight(rs.getBigDecimal("room_type"));
 
             roomList.add(room);
         }
@@ -54,9 +56,10 @@ public class RoomRepository {
         PreparedStatementCreator psc = new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES(null , null,?,?)", new String[]{"room_id"});
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES(null , null,?,?,?)", new String[]{"room_id"});
                 ps.setString(1, room.getHotel());
                 ps.setString(2, room.getRoom_type());
+                ps.setBigDecimal(3,room.getCostPerNight());
 
                 return ps;
             }
