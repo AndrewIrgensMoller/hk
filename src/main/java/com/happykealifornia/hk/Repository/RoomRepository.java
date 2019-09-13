@@ -30,7 +30,7 @@ public class RoomRepository {
             room.setRoom_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
             room.setRoom_type(rs.getString("room_type"));
-            room.setCostPerNight(rs.getBigDecimal("room_type"));
+            room.setCostPerNight(rs.getBigDecimal("costPerNight"));
         }
         return room;
     }
@@ -44,7 +44,7 @@ public class RoomRepository {
             room.setHotel_id(rs.getInt("hotel_id"));
             room.setHotel(rs.getString("hotel"));
             room.setRoom_type(rs.getString("room_type"));
-            room.setCostPerNight(rs.getBigDecimal("room_type"));
+            room.setCostPerNight(rs.getBigDecimal("costPerNight"));
 
             roomList.add(room);
         }
@@ -72,8 +72,8 @@ public class RoomRepository {
     }
 
     public void update(Room room) {
-        String sql = "UPDATE room SET hotel=?, room_type=? WHERE room_id=" + room.getRoom_id();
-        jdbc.update(sql, room.getHotel(), room.getRoom_type());
+        String sql = "UPDATE room SET hotel=?, room_type=?, costPerNight=?, WHERE room_id=" + room.getRoom_id();
+        jdbc.update(sql, room.getHotel(), room.getRoom_type(), room.getCostPerNight());
     }
 
     public void delete(int room_id) {
